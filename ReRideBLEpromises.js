@@ -61,7 +61,7 @@ function onStartButtonClick() {
             //tst = service.getCharacteristic(characteristicUuid);
             return service.getCharacteristic(characteristicUuid);
         })
-        then(service => {
+        .then(service => {
             log('Getting Characteristic...');
             //tst = service.getCharacteristic(characteristicUuid);
             return service.getCharacteristic(characteristicUuid1);
@@ -72,7 +72,7 @@ function onStartButtonClick() {
                 log('> Notifications started');
                 myCharacteristic.addEventListener('characteristicvaluechanged',
                     handleNotifications);
-            });
+            })
             .then(characteristic1 => {
                 myCharacteristic1 = characteristic1;
                 return myCharacteristic1.startNotifications().then(_ => {
