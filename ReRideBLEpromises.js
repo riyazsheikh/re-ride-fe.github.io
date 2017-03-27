@@ -2,7 +2,7 @@
  * Created by sokoler on 04/08/16.
  */
 
-const serviceUuid = "battery_service";
+const serviceUuid = "user_data";
 const characteristicUuid = "age";
 const characteristicUuid1 = "weight";
 const deviceName = "ReRide";
