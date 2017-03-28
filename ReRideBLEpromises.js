@@ -4,8 +4,8 @@
 
 
 
-const serviceUuid = "battery_service";
-const characteristicUuid ="battery_level";
+const serviceUuid = "user_data";
+const characteristicUuid ="age";
 const deviceName = "ReRide";
 
 var myCharacteristic;
