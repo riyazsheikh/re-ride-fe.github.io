@@ -2,15 +2,14 @@
  * Created by sokoler on 04/08/16.
  */
 
-const serviceUuid = "user_data";
-const characteristicUuid = "age";
-const characteristicUuid1 = "weight";
+
+
+const serviceUuid = "battery_service";
+const characteristicUuid ="battery_level";
 const deviceName = "ReRide";
 
 var myCharacteristic;
-var myCharacteristic1;
 var gauge;
-var gauge1;
 
 function initGauge()
 {
@@ -23,25 +22,9 @@ function initGauge()
     });
 }
 
-function initGauge1()
-{
-    gauge1 = new JustGage({
-        id: "gauge1",
-        value: 0,
-        min: 0,
-        max: 255,
-        title: "Visitors1"
-    });
-}
-
 function setGauge(currentValue)
 {
     gauge.refresh(currentValue);
-}
-
-function setGauge1(currentValue)
-{
-    gauge1.refresh(currentValue);
 }
 
 function onStartButtonClick() {
@@ -61,25 +44,13 @@ function onStartButtonClick() {
             //tst = service.getCharacteristic(characteristicUuid);
             return service.getCharacteristic(characteristicUuid);
         })
-        .then(service => {
-            log('Getting Characteristic...');
-            //tst = service.getCharacteristic(characteristicUuid);
-            return service.getCharacteristic(characteristicUuid1);
-        })
         .then(characteristic => {
             myCharacteristic = characteristic;
             return myCharacteristic.startNotifications().then(_ => {
                 log('> Notifications started');
                 myCharacteristic.addEventListener('characteristicvaluechanged',
                     handleNotifications);
-            })
-            .then(characteristic1 => {
-                myCharacteristic1 = characteristic1;
-                return myCharacteristic1.startNotifications().then(_ => {
-                    log('> Notifications started');
-                    myCharacteristic1.addEventListener('characteristicvaluechanged',
-                        handleNotifications1);
-                });
+            });
         })
         .catch(error => {
             log('Argh! ' + error);
@@ -95,19 +66,7 @@ function onStopButtonClick() {
                     handleNotifications);
             })
             .catch(error => {
-                log('Argh! Sensor 1! ' + error);
-            });
-    }
-
-    if (myCharacteristic1) {
-        myCharacteristic1.stopNotifications()
-            .then(_ => {
-                log('> Notifications stopped');
-                myCharacteristic1.removeEventListener('characteristicvaluechanged',
-                    handleNotifications1);
-            })
-            .catch(error => {
-                log('Argh! Sensor 2!' + error);
+                log('Argh! ' + error);
             });
     }
 }
@@ -123,18 +82,4 @@ function handleNotifications(event) {
     setGauge(x);
 
 }
-
-function handleNotifications1(event) {
-    let value = event.target.value;
- /*   let b = value.getUint8(0).toString();
-
-    // now do stuff with the data received !
-    log('> ' + b);
- */
-    let x = value.getUint8(0);
-    setGauge1(x);
-
-}
-
 initGauge();
-initGauge1();
