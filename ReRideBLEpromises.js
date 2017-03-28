@@ -5,7 +5,7 @@
 
 
 const serviceUuid = "user_data";
-const characteristicUuid ="age";
+const characteristicUuid ="weight";
 const deviceName = "ReRide";
 
 var myCharacteristic;
