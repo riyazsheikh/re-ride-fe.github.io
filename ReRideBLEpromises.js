@@ -6,7 +6,7 @@
 
 const serviceUuid = "user_data";
 const characteristicUuid ="age";
-const deviceName = "ReRide";
+const deviceName = "ReRide1";
 
 var myCharacteristic;
 var gauge;
