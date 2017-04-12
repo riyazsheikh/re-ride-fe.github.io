@@ -66,13 +66,21 @@ function onStartButtonClick() {
             var p1 = myWeightCharacteristic.startNotifications()
             .then(_ => {
                 log('> Notifications started');
+<<<<<<< HEAD
                 myWeightCharacteristic.addEventListener('characteristicweightchanged',
+=======
+                myCharacteristic.weight.addEventListener('characteristicweightchanged',
+>>>>>>> parent of bc296c1... Update ReRideBLEpromises.js
                     handleWeightNotifications);
             });
 
             var p2 = myAgeCharacteristic.startNotifications().then(_ => {
                 log('> Notifications started');
+<<<<<<< HEAD
                 myAgeCharacteristic.addEventListener('characteristicagechanged',
+=======
+                myCharacteristic.age.addEventListener('characteristicagechanged',
+>>>>>>> parent of bc296c1... Update ReRideBLEpromises.js
                     handleAgeNotifications);
             });
 
