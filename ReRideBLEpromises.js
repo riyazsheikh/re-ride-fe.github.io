@@ -1,4 +1,3 @@
-
 /**
  * Created by sokoler on 04/08/16.
  */
@@ -55,28 +54,19 @@ function onStartButtonClick() {
             log('Getting Characteristic...');
             var weight = service.getCharacteristic(characteristicWeight);
             var age = service.getCharacteristic(characteristicAge);
-            return { weight: weight, age: age };
+            return { "weight": weight, "age": age };
         })
         .then(characteristic => {
             myCharacteristic = characteristic;
-            var p1 = myCharacteristic.startNotifications()
-            .then(_ => {
+            var p1 = myCharacteristic.weight.startNotifications().then(_ => {
                 log('> Notifications started');
-<<<<<<< HEAD
-                myCharacteristic.addEventListener('characteristicweightchanged',
-=======
-                myWeightCharacteristic.addEventListener('characteristicweightchanged',
->>>>>>> parent of 0134c9f... merge test
+                myCharacteristic.weight.addEventListener('characteristicweightchanged',
                     handleWeightNotifications);
             });
 
-            var p2 = myCharacteristic.startNotifications().then(_ => {
+            var p2 = myCharacteristic.age.startNotifications().then(_ => {
                 log('> Notifications started');
-<<<<<<< HEAD
-                myCharacteristic.addEventListener('characteristicagechanged',
-=======
-                myAgeCharacteristic.addEventListener('characteristicagechanged',
->>>>>>> parent of 0134c9f... merge test
+                myCharacteristic.age.addEventListener('characteristicagechanged',
                     handleAgeNotifications);
             });
 
@@ -106,7 +96,7 @@ function onStopButtonClick() {
 function handleWeightNotifications(event) {
     let value = event.target.value;
     /*   let b = value.getUint8(0).toString();
-   
+
        // now do stuff with the data received !
        log('> ' + b);
     */
@@ -118,7 +108,7 @@ function handleWeightNotifications(event) {
 function handleAgeNotifications(event) {
     let value = event.target.value;
     /*   let b = value.getUint8(0).toString();
-   
+
        // now do stuff with the data received !
        log('> ' + b);
     */
