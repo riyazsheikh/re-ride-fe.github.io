@@ -62,13 +62,13 @@ function onStartButtonClick() {
             var p1 = myCharacteristic.startNotifications()
             .then(_ => {
                 log('> Notifications started');
-                myCharacteristic.weight.addEventListener('characteristicweightchanged',
+                myCharacteristic.addEventListener('characteristicweightchanged',
                     handleWeightNotifications);
             });
 
             var p2 = myCharacteristic.startNotifications().then(_ => {
                 log('> Notifications started');
-                myCharacteristic.age.addEventListener('characteristicagechanged',
+                myCharacteristic.addEventListener('characteristicagechanged',
                     handleAgeNotifications);
             });
 
