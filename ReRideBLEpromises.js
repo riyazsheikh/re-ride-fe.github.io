@@ -10,8 +10,7 @@ const characteristicWeight = "weight";
 const characteristicAge = "age";
 const deviceName = "ReRide";
 
-var myAgeCharacteristic;
-var myWeightCharacteristic;
+var myCharacteristic;
 var gauge_w;
 var gauge_a;
 
@@ -58,28 +57,25 @@ function onStartButtonClick() {
             var age = service.getCharacteristic(characteristicAge);
             return { weight: weight, age: age };
         })
-        .then(characteristic => 
-         {
-            myWeightCharacteristic = characteristicWeight;
-            myAgeCharacteristic = characteristicAge;
-        
-            var p1 = myWeightCharacteristic.startNotifications()
+        .then(characteristic => {
+            myCharacteristic = characteristic;
+            var p1 = myCharacteristic.startNotifications()
             .then(_ => {
                 log('> Notifications started');
-                myWeightCharacteristic.addEventListener('characteristicweightchanged',
+                myCharacteristic.addEventListener('characteristicweightchanged',
                     handleWeightNotifications);
             });
 
-            var p2 = myAgeCharacteristic.startNotifications().then(_ => {
+            var p2 = myCharacteristic.startNotifications().then(_ => {
                 log('> Notifications started');
-                myAgeCharacteristic.addEventListener('characteristicagechanged',
+                myCharacteristic.addEventListener('characteristicagechanged',
                     handleAgeNotifications);
             });
 
         })
         .catch(error => {
             log('Argh! ' + error);
-        });    
+        });
 }
 
 function onStopButtonClick() {
