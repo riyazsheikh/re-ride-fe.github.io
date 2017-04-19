@@ -1,6 +1,6 @@
 var pf  //Pressure Feedback
-  var aux //Auxillary Feedback
-  var sensor_data = [];
+var aux //Auxillary Feedback
+var sensor_data = [];
 var xoff = 0.0;
 var t=0;
 
@@ -25,15 +25,16 @@ function draw() {
   //pf.beginDraw();
   pf.background(0);
   pf.strokeCap(SQUARE);
-  pf.strokeWeight(1);
-  pf.stroke(rc, 100);
-  pf.line(0, map(1, 0, 4, 0, pf.height), pf.width, map(1, 0, 4, 0, pf.height));
-  pf.stroke(yc, 100);
-  pf.line(0, map(2, 0, 4, 0, pf.height), pf.width, map(2, 0, 4, 0, pf.height));
-  pf.stroke(gc, 100);
-  pf.line(0, map(3, 0, 4, 0, pf.height), pf.width, map(3, 0, 4, 0, pf.height));
   pf.strokeWeight(10);
   drawline();
+  pf.strokeWeight(1);
+  pf.stroke(100, 100);
+  pf.line(0, map(1, 0, 4, 0, pf.height), pf.width, map(1, 0, 4, 0, pf.height));
+  pf.stroke(100, 100);
+  pf.line(0, map(2, 0, 4, 0, pf.height), pf.width, map(2, 0, 4, 0, pf.height));
+  pf.stroke(100, 100);
+  pf.line(0, map(3, 0, 4, 0, pf.height), pf.width, map(3, 0, 4, 0, pf.height));
+
   //println(sensor_data[0]);
   //pf.endDraw();
 
